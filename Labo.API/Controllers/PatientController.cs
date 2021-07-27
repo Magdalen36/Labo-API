@@ -61,8 +61,12 @@ namespace Labo.API.Controllers
             }
         }
 
+
+        //PAS BON !
+        //Faire un modèle intermédiaire (plusieurs, car adresse ?) 
+
         [HttpPost]
-        public ActionResult<Patient> Post([FromForm] Patient patient) //frombody ? //En vrai je sais meme pas si cette fonctionnalité fonctionne
+        public ActionResult<Patient> Post([FromForm] Patient patient) 
         {
             try
             {

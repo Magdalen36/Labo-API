@@ -26,20 +26,20 @@ namespace Labo.Services
             return _dc.Centres.SingleOrDefault(i => i.Id == id);
         }
 
-        public PlanificationCentre Planification(int centreId)
+        public PlanificationCentreModel PlanificationCentre(int centreId)
         {
             Centre c = _dc.Centres.SingleOrDefault(i => i.Id == centreId);
             IEnumerable<LotVaccin> lotVaccins = _dc.LotVaccins.Where(l => l.CentreId == c.Id).Include("TypeVaccin");
-            List<TypeVaccin> typeVaccins = new List<TypeVaccin>();
+            List<string> typeVaccins = new List<string>();
 
             foreach (var item in lotVaccins)
             {
-                if (typeVaccins.Contains(item.TypeVaccin) == false) typeVaccins.Add(item.TypeVaccin);
+                if (typeVaccins.Contains(item.TypeVaccin.Name) == false) typeVaccins.Add(item.TypeVaccin.Name);
             }
 
-            PlanificationCentre p = new PlanificationCentre();
-            p.Centre = c;
+            PlanificationCentreModel p = new PlanificationCentreModel();
             p.CentreId = c.Id;
+            p.CentreName = c.Name;
             p.TypeVaccins = typeVaccins;
 
             return p;

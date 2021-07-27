@@ -25,6 +25,16 @@ namespace Labo.Services
             return _dc.CalendrierJours.SingleOrDefault(i => i.Id == id);
         }
 
+        public IEnumerable<CalendrierJour> GetAllByCentre(int idCentre)
+        {
+            return _dc.CalendrierJours.Where(i => i.CentreId == idCentre);
+        }
         
+        public IEnumerable<CalendrierHeure> GetAllByJour(int idJour)
+        {
+            return _dc.CalendrierHeures.Where(i => i.CalendrierJourId == idJour);
+        }
+
+
     }
 }
