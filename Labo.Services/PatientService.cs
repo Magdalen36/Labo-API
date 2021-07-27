@@ -2,6 +2,7 @@
 using Labo.DAL.Entities;
 using Labo.Services.Bases;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,13 @@ namespace Labo.Services
         }
 
         //Faire toute la gestion de création de patient 
+
+        public Patient Insert(Patient entity)
+        {
+            EntityEntry<Patient> result = _dc.Patients.Add(entity);
+            _dc.SaveChanges();
+            return result.Entity;
+        }
 
         public IEnumerable<Patient> GetAll()
         {

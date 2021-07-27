@@ -60,6 +60,25 @@ namespace Labo.API.Controllers
                 });
             }
         }
+
+        [HttpPost]
+        public ActionResult<Patient> Post([FromForm] Patient patient) //frombody ? //En vrai je sais meme pas si cette fonctionnalité fonctionne
+        {
+            try
+            {
+                if (patient is null) return BadRequest();
+                Patient result = _service.Insert(patient);
+                return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    Method = "Post",
+                    Message = ex.Message
+                });
+            }
+        }
         
     }
 }
