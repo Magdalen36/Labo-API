@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Labo\Labo.DAL\Labo.DAL.csproj" />
+    <ProjectReference Include="..\Labo.Models\Labo.Models.csproj" />
     <ProjectReference Include="..\Labo.Services\Labo.Services.csproj" />
   </ItemGroup>
 

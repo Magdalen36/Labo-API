@@ -22,7 +22,7 @@ namespace Labo.API.Controllers
 
         // GET: api/<PatientController>
         [HttpGet]
-        public ActionResult<IEnumerable<Injection>> Get()
+        public ActionResult<IEnumerable<Injection>> Get()   //GetAll
         {
             try
             {
@@ -39,13 +39,30 @@ namespace Labo.API.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public ActionResult<Injection> Get(int id)
+        public ActionResult<Injection> Get(int id)   //GetById
         {
             try
             {
                 Injection result = _service.GetById(id);
                 if (result is null) return NotFound();
                 return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    Method = "Get",
+                    Message = ex.Message
+                });
+            }
+        }
+
+        [HttpGet("[action]{id:int}")]
+        public ActionResult<IEnumerable<Injection>> GetByPatient(int id)   //GetAll by Patient
+        {
+            try
+            {
+                return Ok(_service.GetAllByPatient(id));
             }
             catch (Exception ex)
             {

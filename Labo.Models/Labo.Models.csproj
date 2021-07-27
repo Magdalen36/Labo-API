@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Labo\Labo.DAL\Labo.DAL.csproj" />
-    <ProjectReference Include="..\Labo.API\Labo.API.csproj" />
-    <ProjectReference Include="..\Labo.Services\Labo.Services.csproj" />
   </ItemGroup>
 
 </Project>

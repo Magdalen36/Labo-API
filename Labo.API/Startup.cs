@@ -39,6 +39,7 @@ namespace Labo.API
 
             services.AddScoped<PatientService>();
             services.AddScoped<InjectionService>();
+            services.AddScoped<CentreService>();
 
             services.AddSwaggerGen(c =>
             {

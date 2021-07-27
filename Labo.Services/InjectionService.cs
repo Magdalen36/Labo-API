@@ -25,6 +25,12 @@ namespace Labo.Services
             return _dc.Injections.SingleOrDefault(i => i.Id == id);
         }
 
+        //Pour obtenir le résumé des injections pour le patient
+        public IEnumerable<Injection> GetAllByPatient(int idPatient)
+        {
+            return _dc.Injections.Where(i => i.Id == idPatient).ToList();
+        }
+
         public Injection Update(Injection entity)
         {
             Injection result = GetById(entity.Id);
